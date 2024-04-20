@@ -1,12 +1,13 @@
 <script>
-	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import Button from '$lib/components/Button.svelte';
+	import { page } from '$app/stores';
 </script>
 
 <svelte:head>
 	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="Least Supportive Emotional Support Animal" content="Home" />
 </svelte:head>
 
 <section>
@@ -18,17 +19,22 @@
 			</picture>
 		</span>
 
-		to your new<br />SvelteKit app
 	</h1>
 
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
+	<h1> talk to an unlicensed therapist right meow </h1>
 
-	<Counter />
+	<Button variant="primary" size="large" aria-current={$page.url.pathname === '/chat' ? 'page' : undefined}>
+		<a href="/chat">enter chat</a>
+	</Button>
+
 </section>
 
 <style>
+	a{
+		text-decoration: none;
+		color: white;
+	}
+
 	section {
 		display: flex;
 		flex-direction: column;

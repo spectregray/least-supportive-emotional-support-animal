@@ -11,7 +11,7 @@
 	</main>
 
 	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+		<p>we are not held liable for any advice given or lack thereof</p>
 	</footer>
 </div>
 
@@ -32,8 +32,9 @@
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
-
+	
 	footer {
+		color: rgb(57, 64, 111);
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -41,9 +42,9 @@
 		padding: 12px;
 	}
 
-	footer a {
+	/* footer a {
 		font-weight: bold;
-	}
+	} */
 
 	@media (min-width: 480px) {
 		footer {
