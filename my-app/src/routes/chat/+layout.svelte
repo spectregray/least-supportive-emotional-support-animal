@@ -1,7 +1,7 @@
 <script>
 	import Input from './Input.svelte';
-	import './styles.css';
-	import { messages, loading } from './stores.js';
+	import '../styles.css';
+	import { messages, loading } from './stores';
 	const apiKey = import.meta.env.VITE_OPENAPI;
 	import OpenAI from "openai";
     const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
