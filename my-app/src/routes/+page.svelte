@@ -26,6 +26,7 @@
 		position: absolute;
 		height: 100%;
 		max-width: 100vw;
+		min-width: 100vw;
 		top: 0px;
 		left: 0px;
 		overflow-y: auto;

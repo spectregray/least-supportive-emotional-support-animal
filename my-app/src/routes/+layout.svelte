@@ -18,7 +18,10 @@
 	];
 
 	msgsVal.forEach((x) => {
-		
+		messages.update((n) => {
+			n.unshift(x)
+			return n
+		})
 	})
 
 	function newMessage(e) {
