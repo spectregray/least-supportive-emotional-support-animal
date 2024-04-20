@@ -28,7 +28,7 @@
 </script>
 <div class={"bubble right" + ($loading ? ' no' : '')}>
     <label class="input-sizer stacked">
-        <textarea bind:value={content} on:keydown={shiftCheck} on:keyup={handleInput} oninput="this.parentNode.dataset.value = this.value" rows="1" placeholder="What's got you down chump?" disabled={$loading}></textarea>
+        <textarea bind:value={content} on:keydown={shiftCheck} on:keyup={handleInput} oninput="this.parentNode.dataset.value = this.value" rows="1" placeholder="Enter message" disabled={$loading}></textarea>
     </label>
 </div>
 <style>

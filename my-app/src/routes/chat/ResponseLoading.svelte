@@ -1,5 +1,16 @@
 <script>
-    let img = "https://i.imgflip.com/80me7d.jpg"
+    import bertrand from '$lib/images/bertrand.gif';
+	import norman from '$lib/images/norman.gif';
+	import jimmy from '$lib/images/jimmy.gif';
+	import harold from '$lib/images/harold.gif';
+    export let therapist = 'bertrand';
+    let therapist_to_img = {
+        'bertrand': bertrand,
+        'norman': norman,
+        'jimmy': jimmy,
+        'harold': harold
+    }
+    let img = therapist_to_img[therapist]
 </script>
 <div class="message-cont reverse">
     <div class="bubble right">

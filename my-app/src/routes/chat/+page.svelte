@@ -27,7 +27,8 @@
 
 <style>
 	.chat-scroll {
-		position: absolute;
+		/* position: absolute; */
+		align-items: center;
 		height: 100%;
 		max-width: 100vw;
 		min-width: 100vw;

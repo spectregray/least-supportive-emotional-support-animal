@@ -1,18 +1,30 @@
 <script>
+    import bertrand from '$lib/images/bertrand.gif';
+	import norman from '$lib/images/norman.gif';
+	import jimmy from '$lib/images/jimmy.gif';
+	import harold from '$lib/images/harold.gif';
+    import hamster from '$lib/images/hamster.png';
     export let gpt;
     export let content;
     export let image = null;
-    let img = gpt ? 'https://i.imgflip.com/80me7d.jpg' : "https://i.scdn.co/image/ab67616d00001e02cfeae645958e9248abff0710"
+    export let therapist = 'bertrand';
+    let therapist_to_img = {
+        'bertrand': bertrand,
+        'norman': norman,
+        'jimmy': jimmy,
+        'harold': harold
+    }
+    let img = gpt ? therapist_to_img[therapist] : hamster;
 </script>
 <div class={"message-cont" + (gpt ? ' reverse' : '')}>
     <div class="bubble right">
         <div>{content}</div>
         {#if image != null}
-        <img src={image} />
+        <img src={img} alt="idk"/>
         {/if}
     </div>
     <div class="user-pfp">
-        <img src={img} />
+        <img src={img} alt="idk2" />
     </div>
 </div>
 <style>

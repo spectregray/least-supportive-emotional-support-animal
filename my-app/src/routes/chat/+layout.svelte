@@ -2,6 +2,10 @@
 	import Input from './Input.svelte';
 	import '../styles.css';
 	import { messages, loading } from './stores';
+	import bertrand from '$lib/images/bertrand.gif';
+	import norman from '$lib/images/norman.gif';
+	import jimmy from '$lib/images/jimmy.gif';
+	import harold from '$lib/images/harold.gif';
 	const apiKey = import.meta.env.VITE_OPENAPI;
 	import OpenAI from "openai";
     const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
@@ -32,7 +36,7 @@
             messages: [
             {
                 role: "system",
-                content: `You are a talking cat. Your responses start with "meow meow" and respond in a Gen-Z tone. When you want to use "lmao", use "lmeow" instead. Don't use any capitalization. You do not care about the emotional state of the person talking to you and you instead flaunt about how fabulous you are.`
+                content: `You are a talking cat. Your responses start with "meow meow" and respond in a Gen-Z tone. When you want to use "lmao", use "lmeow" instead. Don't use any capitalization. Express that you don't care at all without explicitly saying you do not care. Complain that the user is annoying, etc.`
             },
             {
                 role: "user",
@@ -51,6 +55,7 @@
 				id: n.length + 1,
 				content: e.detail,
 				gpt: false,
+				therapist: therapist[0],
 			})
 			return n
 		})
@@ -66,10 +71,19 @@
 			return n
 		})	
 	}
+	let texts2 = [['harold', harold], ['bertrand', bertrand], ['jimmy', jimmy], ['norman', norman]]
+  	let therapist = texts2[Math.floor(Math.random() * texts2.length)]; 
 	
 </script>
 
 <div class="app">
+	<div class="header">
+		<div class="circle">
+			<img src={therapist[1]} alt="cat pic" />
+		</div>
+		<h2>You are talking to</h2>
+		<h1>{therapist[0].toUpperCase()}</h1>
+	</div>
 	<div class="main">
 		<slot />
 	</div>
@@ -81,6 +95,21 @@
 	</footer>
 </div>
 <style>
+	h1 {
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	h2 {
+		font-size: 20px;
+		margin: 5px 0 0 0;
+	}
+	.header {
+		margin-top: 10px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		align-self: center;
+	}
 	.app {
 		display: flex;
 		flex-direction: column;
@@ -89,12 +118,29 @@
 
 	.main {
 		flex: 1 1 auto;
-		max-width: 100vw;
+		max-width: 90vw;
 		position: relative;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.footer {
 		display: flex;
 		padding: 15px;
+		max-width: 90vw;
+	}
+	.circle {
+		border-radius: 50%;
+		width: 100px;
+		height: 100px;
+		background-color: #f0f0f0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+	}
+	img {
+		width: 100%;
+		height: 100%;
 	}
 </style>

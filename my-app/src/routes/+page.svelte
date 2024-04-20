@@ -17,7 +17,7 @@
 	
 	<img src="/favicon.png" alt="chat box" />
 
-	<h1> talk to an unlicensed therapist right meow </h1>
+	<h1> talk to an unlicensed therapist </h1>
 
 	<Button variant="primary" size="large" aria-current={$page.url.pathname === '/chat' ? 'page' : undefined}>
 		<a href="/chat">enter chat</a>
