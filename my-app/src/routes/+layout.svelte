@@ -1,7 +1,7 @@
 <script>
 	import Input from './Input.svelte';
 	import './styles.css';
-	import { messages } from './stores.js';
+	import { messages, loading } from './stores.js';
 
 	let msgsVal = [
 		{
@@ -33,6 +33,10 @@
 			})
 			return n
 		})
+		loading.set(true);
+		setTimeout(() => {
+			loading.set(false)
+		}, 5000);
 	}
 	
 </script>

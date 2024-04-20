@@ -1,4 +1,5 @@
 <script>
+	import { loading } from './stores.js';
 	let content = "";
 	let shiftDown = false;
 	import { createEventDispatcher } from 'svelte';
@@ -25,9 +26,9 @@
 		}
 	}
 </script>
-<div class="bubble right">
+<div class={"bubble right" + ($loading ? ' no' : '')}>
     <label class="input-sizer stacked">
-        <textarea bind:value={content} on:keydown={shiftCheck} on:keyup={handleInput} oninput="this.parentNode.dataset.value = this.value" rows="1" placeholder="What's got you down chump?"></textarea>
+        <textarea bind:value={content} on:keydown={shiftCheck} on:keyup={handleInput} oninput="this.parentNode.dataset.value = this.value" rows="1" placeholder="What's got you down chump?" disabled={$loading}></textarea>
     </label>
 </div>
 <style>
@@ -79,5 +80,11 @@
   color: #000;
   box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
   box-sizing: border-box;
+}
+
+.bubble.no, .no .input-sizer, .no textarea {
+	filter: brightness(0.8);
+	opacity: 0.8;
+	cursor:not-allowed;
 }
 </style>

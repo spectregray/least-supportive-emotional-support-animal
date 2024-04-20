@@ -1,6 +1,7 @@
 <script>
 	import Message from './Message.svelte';
-	import { messages } from './stores.js';
+	import ResponseLoading from './ResponseLoading.svelte';
+	import { messages, loading } from './stores.js';
 
 	let msgVal = [];
 	const unsubscribe = messages.subscribe((value) => {
@@ -15,6 +16,9 @@
 
 <div class="chat-scroll">
 	<div class="c-inner">
+		{#if $loading}
+			<ResponseLoading />
+		{/if}
 		{#each msgVal as msg (msg.id)}
 			<Message {...msg} />
 		{/each}
