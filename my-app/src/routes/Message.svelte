@@ -1,7 +1,7 @@
 <script>
     export let gpt;
     export let content;
-    export let image;
+    export let image = null;
     let img = gpt ? 'https://i.imgflip.com/80me7d.jpg' : "https://i.scdn.co/image/ab67616d00001e02cfeae645958e9248abff0710"
 </script>
 <div class={"message-cont" + (gpt ? ' reverse' : '')}>

@@ -2,6 +2,9 @@
 	import Input from './Input.svelte';
 	import './styles.css';
 	import { messages, loading } from './stores.js';
+	const apiKey = import.meta.env.VITE_OPENAPI;
+	import OpenAI from "openai";
+    const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
 
 	let msgsVal = [
 		{
@@ -24,7 +27,25 @@
 		})
 	})
 
-	function newMessage(e) {
+	async function generateText(q) {
+        const completion = await openai.chat.completions.create({
+            messages: [
+            {
+                role: "system",
+                content: `You are a talking cat. Your responses start with "meow meow" and respond in a Gen-Z tone. When you want to use "lmao", use "lmeow" instead. Don't use any capitalization. You do not care about the emotional state of the person talking to you and you instead flaunt about how fabulous you are.`
+            },
+            {
+                role: "user",
+                content: q
+            }
+            ],
+            model: "gpt-3.5-turbo"
+        });
+        const res = completion.choices[0].message.content;
+        return res;
+    }
+
+	async function newMessage(e) {
 		messages.update((n) => {
 			n.unshift({
 				id: n.length + 1,
@@ -34,9 +55,16 @@
 			return n
 		})
 		loading.set(true);
-		setTimeout(() => {
-			loading.set(false)
-		}, 5000);
+		const response = await generateText(e.detail);
+		loading.set(false)	
+		messages.update((n) => {
+			n.unshift({
+				id: n.length + 1,
+				content: response,
+				gpt: true,
+			})
+			return n
+		})	
 	}
 	
 </script>
