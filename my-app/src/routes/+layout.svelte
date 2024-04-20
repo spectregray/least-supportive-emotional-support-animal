@@ -25,14 +25,7 @@
 		box-sizing: border-box;
 	}
 	
-	footer {
-		color: rgb(57, 64, 111);
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
+	
 
 	/* footer a {
 		font-weight: bold;

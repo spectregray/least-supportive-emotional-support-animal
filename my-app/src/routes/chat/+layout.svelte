@@ -97,8 +97,4 @@
 		display: flex;
 		padding: 15px;
 	}
-
-	footer {
-		text-align: center;
-	}
 </style>
