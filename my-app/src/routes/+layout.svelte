@@ -6,26 +6,26 @@
 	import OpenAI from "openai";
     const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
 
-	let msgsVal = [
-		{
-			id: 1,
-			gpt: false,
-			content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-		},
-		{
-			id: 2,
-			gpt: true,
-			content: "Sucks to suck huh.",
-			image: "https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg"
-		}
-	];
+	// let msgsVal = [
+	// 	{
+	// 		id: 1,
+	// 		gpt: false,
+	// 		content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+	// 	},
+	// 	{
+	// 		id: 2,
+	// 		gpt: true,
+	// 		content: "Sucks to suck huh.",
+	// 		image: "https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg"
+	// 	}
+	// ];
 
-	msgsVal.forEach((x) => {
-		messages.update((n) => {
-			n.unshift(x)
-			return n
-		})
-	})
+	// msgsVal.forEach((x) => {
+	// 	messages.update((n) => {
+	// 		n.unshift(x)
+	// 		return n
+	// 	})
+	// })
 
 	async function generateText(q) {
         const completion = await openai.chat.completions.create({
