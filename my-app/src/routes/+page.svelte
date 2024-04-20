@@ -1,6 +1,4 @@
 <script>
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
 	import Button from '$lib/components/Button.svelte';
 	import { page } from '$app/stores';
 </script>
@@ -12,14 +10,12 @@
 
 <section>
 	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
+		<div class="welcome">
+			least supportive <br> emotional support <br> animal
+		</div>
 	</h1>
+	
+	<img src="/favicon.png" alt="chat box" />
 
 	<h1> talk to an unlicensed therapist right meow </h1>
 
@@ -30,6 +26,7 @@
 </section>
 
 <style>
+
 	a{
 		text-decoration: none;
 		color: white;
@@ -49,17 +46,19 @@
 
 	.welcome {
 		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
+		height: 100px;
+		justify-content: center;
+		animation: title-animate 5s infinite;
+		/* padding: 0 0 calc(100% * 495 / 2048) 0;
+		background-image: url('$lib/images/chat-box.png');
+		background-size: contain;
+		background-repeat: no-repeat; */
 	}
 
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	@keyframes title-animate {
+		15% {
+				font-size: 50px; 
+  				transform: rotate(-10deg);
+			}
 	}
 </style>
