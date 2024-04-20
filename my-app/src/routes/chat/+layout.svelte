@@ -76,6 +76,9 @@
 	<div class="footer">
 		<Input on:message={newMessage} />
 	</div>
+	<footer>
+		<p>we are not held liable for any advice given or lack thereof</p>
+	</footer>
 </div>
 <style>
 	.app {
@@ -93,5 +96,9 @@
 	.footer {
 		display: flex;
 		padding: 15px;
+	}
+
+	footer {
+		text-align: center;
 	}
 </style>
