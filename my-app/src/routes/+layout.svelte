@@ -1,53 +1,62 @@
 <script>
-	import Header from './Header.svelte';
+	import Input from './Input.svelte';
 	import './styles.css';
+	import { messages } from './stores.js';
+
+	let msgsVal = [
+		{
+			id: 1,
+			gpt: false,
+			content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+		},
+		{
+			id: 2,
+			gpt: true,
+			content: "Sucks to suck huh.",
+			image: "https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg"
+		}
+	];
+
+	msgsVal.forEach((x) => {
+		
+	})
+
+	function newMessage(e) {
+		messages.update((n) => {
+			n.unshift({
+				id: n.length + 1,
+				content: e.detail,
+				gpt: false,
+			})
+			return n
+		})
+	}
+	
 </script>
 
 <div class="app">
-	<Header />
-
-	<main>
+	<div class="main">
 		<slot />
-	</main>
-
-	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-	</footer>
+	</div>
+	<div class="footer">
+		<Input on:message={newMessage} />
+	</div>
 </div>
-
 <style>
 	.app {
 		display: flex;
 		flex-direction: column;
-		min-height: 100vh;
+		height: 100vh;
 	}
 
-	main {
-		flex: 1;
+	.main {
+		flex: 1 1 auto;
+		max-width: 100vw;
+		position: relative;
+	}
+
+	.footer {
 		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
+		padding: 15px;
 	}
 </style>
