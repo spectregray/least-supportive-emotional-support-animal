@@ -14,3 +14,4 @@ Then run the program
 ```
 npm run dev
 ```
+also add your own openai api key
