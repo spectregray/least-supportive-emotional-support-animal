@@ -1,7 +1,7 @@
 <script>
 	import Input from './Input.svelte';
 	import '../styles.css';
-	import { messages, loading } from './stores';
+	import { messages, loading, therapist } from './stores';
 	import bertrand from '$lib/images/bertrand.gif';
 	import norman from '$lib/images/norman.gif';
 	import jimmy from '$lib/images/jimmy.gif';
@@ -30,13 +30,18 @@
 	// 		return n
 	// 	})
 	// })
-
+	let personalities = {
+		'bertrand':`You are a talking cat. Your responses start with "meow meow" and respond in a Gen-Z tone. When you want to use "lmao", use "lmeow" instead. Don't use any capitalization. Express that you don't care at all without explicitly saying you do not care. Complain that the user is annoying, etc. Do not be sympathetic.`,
+		'norman':`You are a talking cat. Your responses start with "meow meow" and respond in a shakespearean tone with words like "thou" and "art". Express that you don't care at all without explicitly saying you do not care. Complain that the user is annoying, etc. Do NOT be sympathetic. do NOT offer help. Act like you don't care. Talk like shakespeare.`,
+		'jimmy':`You are a talking cat. Respond in a Gen-Z tone. Talk about how you'd rather be sleeping. Don't use any capitalization. Express that you don't care at all without explicitly saying you do not care. Complain that the user is annoying, etc. Do not be sympathetic.`,
+		'harold':`You are a talking cat. Your responses start with "meow meow" and respond in a Gen-Z tone. When you want to use "lmao", use "lmeow" instead. Don't use any capitalization. Express that you don't care at all without explicitly saying you do not care. Complain that the user is annoying, etc. Do not be sympathetic.`
+	}
 	async function generateText(q) {
         const completion = await openai.chat.completions.create({
             messages: [
             {
                 role: "system",
-                content: `You are a talking cat. Your responses start with "meow meow" and respond in a Gen-Z tone. When you want to use "lmao", use "lmeow" instead. Don't use any capitalization. Express that you don't care at all without explicitly saying you do not care. Complain that the user is annoying, etc.`
+                content: personalities[texts2[$therapist][0]], 
             },
             {
                 role: "user",
@@ -55,7 +60,7 @@
 				id: n.length + 1,
 				content: e.detail,
 				gpt: false,
-				therapist: therapist[0],
+				therapist: $therapist,
 			})
 			return n
 		})
@@ -72,17 +77,17 @@
 		})	
 	}
 	let texts2 = [['harold', harold], ['bertrand', bertrand], ['jimmy', jimmy], ['norman', norman]]
-  	let therapist = texts2[Math.floor(Math.random() * texts2.length)]; 
+  	therapist.set(Math.floor(Math.random() * texts2.length)) // index
 	
 </script>
 
 <div class="app">
 	<div class="header">
 		<div class="circle">
-			<img src={therapist[1]} alt="cat pic" />
+			<img src={texts2[$therapist][1]} alt="cat pic" />
 		</div>
 		<h2>You are talking to</h2>
-		<h1>{therapist[0].toUpperCase()}</h1>
+		<h1>{texts2[$therapist][0].toUpperCase()}</h1>
 	</div>
 	<div class="main">
 		<slot />

@@ -4,17 +4,14 @@
 	import jimmy from '$lib/images/jimmy.gif';
 	import harold from '$lib/images/harold.gif';
     import hamster from '$lib/images/hamster.png';
+
+    import {messages,loading, therapist } from './stores.js';
     export let gpt;
     export let content;
     export let image = null;
-    export let therapist = 'bertrand';
-    let therapist_to_img = {
-        'bertrand': bertrand,
-        'norman': norman,
-        'jimmy': jimmy,
-        'harold': harold
-    }
-    let img = gpt ? therapist_to_img[therapist] : hamster;
+    export let id;
+    let texts2 = [['harold', harold], ['bertrand', bertrand], ['jimmy', jimmy], ['norman', norman]]
+    let img = gpt ? texts2[$therapist][1] : hamster;
 </script>
 <div class={"message-cont" + (gpt ? ' reverse' : '')}>
     <div class="bubble right">

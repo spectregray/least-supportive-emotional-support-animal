@@ -1,7 +1,7 @@
 <script>
 	import Message from './Message.svelte';
 	import ResponseLoading from './ResponseLoading.svelte';
-	import { messages, loading } from './stores.js';
+	import { messages, loading, therapist } from './stores.js';
 
 	let msgVal = [];
 	const unsubscribe = messages.subscribe((value) => {
